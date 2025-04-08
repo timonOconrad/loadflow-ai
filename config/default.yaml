@@ -1,0 +1,10 @@
+
+data:
+  parquet_file_path: 'Data/updated_parquet_file.parquet'
+  train_size: 1000
+
+params-KI:
+  epochs: 200
+
+
+
