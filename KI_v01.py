@@ -1,4 +1,15 @@
 import yaml
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error
+import pandas as pd
+import numpy as np
+from sklearn.utils import shuffle
+import csv
+from datetime import datetime
+import matplotlib.pyplot as plt
 
 # Pfad zur YAML-Datei
 yaml_file_path = 'config/default.yaml'
@@ -9,8 +20,7 @@ with open(yaml_file_path, 'r') as file:
 # Pfad zur Parquet-Datei
 parquet_file_path = config['data']['parquet_file_path']
 
-import pandas as pd
-import numpy as np
+
 
 
 
@@ -23,12 +33,7 @@ print(df)
 column_names = df.columns
 print(column_names)
 
-import torch
-import torch.nn as nn
-import torch.optim as optim
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_squared_error
+
 
 # Teilen Sie die Spalten mit Arrays in separate Spalten auf
 df[['P_G_1', 'P_G_2', 'P_G_3', 'P_G_4', 'P_G_5']] = pd.DataFrame(df['P_G'].tolist(), index=df.index)
@@ -69,8 +74,7 @@ Y = scaler.fit_transform(Y)
 trainingsdaten_groesse = X.shape[0]
 print("Datensatz Größe :", trainingsdaten_groesse)
 
-from sklearn.utils import shuffle
-import numpy as np
+
 
 # Annehmen, dass X und Y Ihre ursprünglichen Daten sind
 X, Y = shuffle(X, Y, random_state=42)  # Daten mischen
@@ -104,9 +108,7 @@ Y_val = torch.Tensor(Y_val)
 X_test = torch.Tensor(X_test)
 Y_test = torch.Tensor(Y_test)
 
-import csv
-import time
-from datetime import datetime
+
 
 # Ausgabe der Datensatzgrößen
 print("Trainingsdaten Größe:", X_train.size(0))
@@ -133,7 +135,7 @@ criterion = nn.MSELoss()  # Mean Squared Error Loss
 optimizer = optim.Adam(model.parameters(), lr=0.001)  # Adam Optimizer
 
 # CSV-Datei für das Protokoll vorbereiten
-csv_file = f"training_progress_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+csv_file = f"train/training_progress_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 with open(csv_file, 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['Epoch', 'Train Loss', 'Validation Loss', 'Train Size', 'Validation Size', 'Timestamp'])
@@ -195,7 +197,7 @@ random_sample_Y_true = random_sample_Y_true.numpy()
 random_sample_Y_pred = random_sample_Y_pred.numpy()
 
 
-import matplotlib.pyplot as plt
+
 # Erstellen und Anzeigen einer Grafik für die Abweichung der Werte für den zufälligen Fall
 plt.figure(figsize=(10, 6))
 plt.plot(random_sample_Y_true, label='True Values', marker='o')

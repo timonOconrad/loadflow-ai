@@ -1,3 +1,4 @@
 # Default ignored files
 /shelf/
-updated_parquet_file.parquet
+data/updated_parquet_file.parquet
+train/*.csv
