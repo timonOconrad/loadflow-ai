@@ -6,6 +6,6 @@ train/*.csv
 !data/
 !train/
 
-.idea/misc.xml
+idea/misc.xml
 
 
