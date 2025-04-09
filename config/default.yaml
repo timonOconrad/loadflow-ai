@@ -1,6 +1,6 @@
 
 data:
-  parquet_file_path: 'Data/updated_parquet_file.parquet'
+  parquet_file_path: 'data/updated_parquet_file.parquet'
   train_size: 1000
 
 params-KI:
