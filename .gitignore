@@ -2,6 +2,7 @@
 /shelf/
 data/*.parquet
 train/*.csv
+.idea/
 
 !data/
 !train/
