@@ -1,4 +1,11 @@
 # Default ignored files
 /shelf/
-data/updated_parquet_file.parquet
+data/*.parquet
 train/*.csv
+
+!data/
+!train/
+
+.idea/misc.xml
+
+
