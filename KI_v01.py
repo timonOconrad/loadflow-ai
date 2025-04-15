@@ -133,9 +133,9 @@ model = Net()
 # Verlustfunktion und Optimierer definieren
 criterion = nn.MSELoss()  # Mean Squared Error Loss
 optimizer = optim.Adam(model.parameters(), lr=0.001)  # Adam Optimizer
-
+date_time = datetime.now().strftime('%Y%m%d_%H%M%S')
 # CSV-Datei für das Protokoll vorbereiten
-csv_file = f"train/training_progress_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+csv_file = f"train/training_progress_{date_time}.csv"
 with open(csv_file, 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['Epoch', 'Train Loss', 'Validation Loss', 'Train Size', 'Validation Size', 'Timestamp'])
@@ -185,6 +185,22 @@ with torch.no_grad():
 test_mse = mean_squared_error(Y_test, test_predictions)
 print(f'Test Mean Squared Error: {test_mse:.8f}')
 
+
+torch.save(model, f"train/model_{date_time}.pth")
+
+
+# Gewichte laden
+model_loaded = torch.load(f"train/model_{date_time}.pth")
+model_loaded.eval()
+
+with torch.no_grad():
+    test_predictions_loaded = model_loaded(X_test)
+
+# Berechnen und Anzeigen der Testgenauigkeit (z.B. Mean Squared Error)
+test_mse = mean_squared_error(Y_test, test_predictions_loaded)
+print(f'Test Mean Squared Error Loaded: {test_mse:.8f}')
+
+
 # Wählen Sie einen zufälligen Fall aus dem Testdatensatz
 random_sample_index = np.random.randint(0, len(X_test))
 random_sample_X = X_test[random_sample_index]
@@ -216,3 +232,4 @@ random_sample_Y_true_original_scale = scaler.inverse_transform(random_sample_Y_t
 # Ausgabe der vorhergesagten Werte im ursprünglichen Bereich
 print("Predicted Values (Original Scale):", random_sample_Y_pred_original_scale)
 print("True Values (Original Scale):", random_sample_Y_true_original_scale)
+
