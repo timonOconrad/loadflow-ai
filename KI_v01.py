@@ -190,7 +190,7 @@ torch.save(model, f"train/model_{date_time}.pth")
 
 
 # Gewichte laden
-model_loaded = torch.load(f"train/model_{date_time}.pth")
+model_loaded = torch.load(f"train/model_{date_time}.pth", weights_only=False)
 model_loaded.eval()
 
 with torch.no_grad():
