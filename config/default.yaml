@@ -1,10 +1,10 @@
 
 data:
-  parquet_file_path: 'data/updated_parquet_file.parquet'
+  parquet_file_path: 'Data/changhun_multi_20250716.parquet'
   train_size: 50000
 
 params-KI:
-  epochs: 1000
+  epochs: 200
 
 
 

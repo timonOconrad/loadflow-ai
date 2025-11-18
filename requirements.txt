@@ -4,3 +4,6 @@ scikit-learn
 pandas
 numpy
 matplotlib
+random
+json
+tqdm
