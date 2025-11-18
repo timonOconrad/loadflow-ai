@@ -5,3 +5,4 @@ pandas==2.1.4
 numpy==1.24.4
 matplotlib==3.7.3
 tqdm==4.66.4
+fastparquet==2024.11.0
