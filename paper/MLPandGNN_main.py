@@ -379,7 +379,7 @@ def run_experiment(parquet_file, config):
             losses[k]["val"].append(sums_val[k] / len(loaders["val"]))
         pass
     print()
-    # --- save model  ---
+    # --- Speichern ---
     save_dir= ""
     batch_size = config.get("batch_size", 32)
     max_rows = config.get("max_rows", 10000)

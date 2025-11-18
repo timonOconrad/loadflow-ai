@@ -169,7 +169,7 @@ def run_inference(parquet_file, save_dir="saved_models", batch_size=32):
         plt.savefig(f"{k}_delta.png")
         plt.show()
 
-        # Scatterplots pro Feature (nur 500 Punkte, damit’s lesbar bleibt)
+        # Scatterplots pro Feature
         plt.figure(figsize=(5*n_cols, 3*n_rows))
         for i, fname in enumerate(feature_names):
             y_true = all_true[:500, i]
