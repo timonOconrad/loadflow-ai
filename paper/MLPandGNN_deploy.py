@@ -166,6 +166,7 @@ def run_inference(parquet_file, save_dir="saved_models", batch_size=32):
             plt.xlabel("y_pred - y_true")
             plt.ylabel("Häufigkeit")
         plt.tight_layout()
+        plt.savefig(f"{k}_delta.png")
         plt.show()
 
         # Scatterplots pro Feature (nur 500 Punkte, damit’s lesbar bleibt)
@@ -180,7 +181,9 @@ def run_inference(parquet_file, save_dir="saved_models", batch_size=32):
             plt.title(f"{k}: {fname}")
             plt.xlabel("y_true")
             plt.ylabel("y_pred")
+
         plt.tight_layout()
+        plt.savefig(f"{k}_abs.png")
         plt.show()
 
 
