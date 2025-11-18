@@ -1,5 +1,6 @@
 # Basic Loadflow-ai
 ## Installation
+Please Use Python 3.9!
 
 Clone of the Git Repo
 <pre><code>
